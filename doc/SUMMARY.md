@@ -25,6 +25,7 @@
   - [waywall](02_waywall.md)
     - [active_res](02_waywall_active_res.md)
     - [current_time](02_waywall_current_time.md)
+    - [cursor_grabbed](02_waywall_cursor_grabbed.md)
     - [exec](02_waywall_exec.md)
     - [floating_shown](02_waywall_floating_shown.md)
     - [get_key](02_waywall_get_key.md)

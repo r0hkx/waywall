@@ -293,6 +293,7 @@ on_pointer_lock(struct wl_listener *listener, void *data) {
     struct wrap *wrap = wl_container_of(listener, wrap, on_pointer_lock);
     server_cursor_hide(wrap->server->cursor);
     wrap->input.pointer_locked = true;
+    config_vm_signal_event(wrap->cfg->vm, "cursor");
 }
 
 static void
@@ -300,6 +301,7 @@ on_pointer_unlock(struct wl_listener *listener, void *data) {
     struct wrap *wrap = wl_container_of(listener, wrap, on_pointer_unlock);
     server_cursor_show(wrap->server->cursor);
     wrap->input.pointer_locked = false;
+    config_vm_signal_event(wrap->cfg->vm, "cursor");
 }
 
 static void

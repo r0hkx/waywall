@@ -37,6 +37,7 @@ local function event_handler(name)
 end
 
 local events = {}
+events.cursor = event_handler("cursor")
 events.load = event_handler("load")
 events.resolution = event_handler("resolution")
 events.state = event_handler("state")
@@ -66,6 +67,10 @@ M.active_res = priv.active_res
 
 --- Get the current time, in milliseconds, with an arbitrary epoch.
 M.current_time = priv.current_time
+
+--- Returns whether or not the cursor is currently grabbed by Minecraft.
+-- @return grabbed (boolean) True if the cursor is grabbed, false if it is free.
+M.cursor_grabbed = priv.cursor_grabbed
 
 --- Forks and executes the given command.
 -- The command will be run using fork() and execvp(). Arguments will be split by

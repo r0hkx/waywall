@@ -367,6 +367,20 @@ l_current_time(lua_State *L) {
 }
 
 static int
+l_cursor_grabbed(lua_State *L) {
+    // Prologue
+    struct config_vm *vm = config_vm_from(L);
+    struct wrap *wrap = config_vm_get_wrap(vm);
+    if (!wrap) {
+        return luaL_error(L, STARTUP_ERRMSG("cursor_grabbed"));
+    }
+
+    // Epilogue
+    lua_pushboolean(L, wrap->input.pointer_locked);
+    return 1;
+}
+
+static int
 l_exec(lua_State *L) {
     static constexpr int ARG_COMMAND = 1;
 
@@ -1279,6 +1293,7 @@ static const struct luaL_Reg lua_lib[] = {
     // public (see api.lua)
     {"active_res", l_active_res},
     {"current_time", l_current_time},
+    {"cursor_grabbed", l_cursor_grabbed},
     {"exec", l_exec},
     {"floating_shown", l_floating_shown},
     {"image", l_image},

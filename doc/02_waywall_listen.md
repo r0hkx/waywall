@@ -6,6 +6,8 @@ event listener so that it is not triggered anymore.
 
 The list of valid event names is:
 
+  - `cursor`
+    - For when the cursor is grabbed or released by Minecraft
   - `load`
     - For when configuration loading is finished and functions such as
       `waywall.text()` are now legal to call

@@ -354,13 +354,13 @@ gl_checkerr(const char *msg) {
 
 static void
 gl_buffer_destroy(struct gl_buffer *gl_buffer) {
-    server_buffer_unref(gl_buffer->parent);
-
     eglMakeCurrent(gl_buffer->gl->egl.display, EGL_NO_SURFACE, EGL_NO_SURFACE,
                    gl_buffer->gl->egl.ctx);
 
     glDeleteTextures(1, &gl_buffer->texture);
     gl_buffer->gl->egl.DestroyImageKHR(gl_buffer->gl->egl.display, gl_buffer->image);
+
+    server_buffer_unref(gl_buffer->parent);
 
     wl_list_remove(&gl_buffer->link);
     free(gl_buffer);
